@@ -136,7 +136,7 @@
   }
 
   .container {
-    height: 200px;
+    height: 110px;
     position: relative;
     text-align: center;
   }
@@ -149,4 +149,8 @@
     border: none;
     color: white;
     border-radius: 5px;
+  }
+
+  .red-text {
+    color: red;
   }

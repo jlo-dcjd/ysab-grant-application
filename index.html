@@ -6,6 +6,12 @@
 </head>
 <form action="https://getform.io/f/b088edd5-e5f9-4d4f-bd70-5e760247916b" method="POST">
 
+<div class="container">
+  <div class="center">
+    <img src="juvenile-logo.svg" alt="Dallas Juvenile Logo" width="100" height="100">
+  </div>
+</div>
+
     <header>
       <h2>Dallas County Juror Fund Application</h2>
       <div>Dallas County jurors have the option of contributing their juror fund stipend to help at risk youth in the Dallas County Juvenile Department and the foster care system.  The Youth Services Advisory Board (YSAB) oversees the use of the Dallas County Juror Fund for special projects to address specific concerns related to juvenile crime prevention. In order to be eligible for YSAB recommendation, Dallas County Juvenile Department fund requestors must complete the following application. </div>
@@ -16,7 +22,7 @@
             <li>Applicants must answer all questions</li>
             <li>Length of answers have to adhere to the specified word limit indicated in the question</li>
             <li>Applications must click the submit button to complete the application</li>
-            <li>The application form must be completed by no later than 5:00 PM CST on April 21st, 2023</li>
+            <li>The application form must be completed by <span class="red-text"> no later than 5:00 PM CST on April 21st, 2023</span></li>
           </ol>
     
     <div>
@@ -371,6 +377,13 @@
       </script>
     </div> 
     <br><br>
+    <div>
+      <label class="desc" id="print" for="print">Click the button to print your application.</label>
+      <div>
+        <button onclick="window.print()">Print application</button>
+      </div>
+    </div>
+
     <div class="container">
       <div class="center">
         <input id="saveForm" name="saveForm" type="submit" value="Submit" class="submit-button">
