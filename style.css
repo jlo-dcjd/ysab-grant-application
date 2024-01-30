@@ -101,3 +101,36 @@
         text-align: right;
     }
   }
+  table {
+    width: 70%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: left;
+  }
+  th {
+      background-color: #f2f2f2;
+  }
+
+  /* Adjust the width of the input text boxes */
+  input[type="text"] {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .grand-total-table {
+    width: 50%;
+    margin-top: 20px;
+  }
+
+  .submit-button {
+    width: 150px;
+    height: 40px;
+    background-color: blue;
+    border: none;
+    color: white;
+    border-radius: 5px;
+  }
