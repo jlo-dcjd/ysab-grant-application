@@ -102,7 +102,7 @@
     }
   }
   table {
-    width: 70%;
+    width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
   }
@@ -126,7 +126,23 @@
     margin-top: 20px;
   }
 
+  .center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+
+  .container {
+    height: 200px;
+    position: relative;
+    text-align: center;
+  }
+
   .submit-button {
+    position: absolute;
     width: 150px;
     height: 40px;
     background-color: blue;
