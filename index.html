@@ -23,7 +23,7 @@
     <br>
       <label class="desc" id="name" for="name">Name</label>
       <div>
-        <input id="name" name="name" type="text" class="field text fn" value="" size="8" tabindex="1">
+        <input id="name" name="name" type="text" class="field text fn" value="" size="8" tabindex="1" required>
       </div>
     </div>
 
@@ -41,7 +41,7 @@
           Email
         </label>
         <div>
-          <input id="email" name="email" type="email" spellcheck="false" value="" maxlength="255" tabindex="3"> 
+          <input id="email" name="email" type="email" spellcheck="false" value="" maxlength="255" tabindex="3" required> 
        </div>
     </div>
 
@@ -50,9 +50,27 @@
         Phone Number
       </label>
       <div>
-        <input id="phone" name="phone" type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}" placeholder="123-456-789">
+        <input id="phone" name="phone" type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}" placeholder="123-456-789" oninput="formatPhoneNumber(this)" maxlength="12" required>
      </div>
   </div>
+  <script>
+    function formatPhoneNumber(input) {
+      // Remove any non-numeric characters
+      var phoneNumber = input.value.replace(/\D/g, '');
+
+      // Check if the length is greater than 10, trim it
+      if (phoneNumber.length > 10) {
+        phoneNumber = phoneNumber.substr(0, 10);
+      }
+
+      // Add dashes in the required format
+      var formattedPhoneNumber =
+        phoneNumber.slice(0, 3) + '-' + phoneNumber.slice(3, 6) + '-' + phoneNumber.slice(6, 10);
+
+      // Update the input field value
+      input.value = formattedPhoneNumber;
+    }
+  </script>
 
     <div>
         <label class="desc" id="application_renewal" for="application_renewal">
@@ -321,7 +339,7 @@
           <thead>
               <tr>
                   <th>Grand Total</th>
-                  <td><input type="text" id="grandTotal" readonly></td>
+                  <td><input type="text" name="grandTotal" id="grandTotal" readonly></td>
               </tr>
           </thead>
         </table>
