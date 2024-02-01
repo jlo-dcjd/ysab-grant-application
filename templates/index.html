@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" href="style.css"> 
+  <link rel="stylesheet" href="{{url_for('static', filename='/style.css')}}"> 
   <title>YSAB Application</title>   
 </head>
 <!-- <form action="https://getform.io/f/b088edd5-e5f9-4d4f-bd70-5e760247916b" method="POST"> -->
@@ -9,7 +9,7 @@
 
 <div class="container">
   <div class="center">
-    <img src="juvenile-logo.svg" alt="Dallas Juvenile Logo" width="100" height="100">
+    <img src="{{url_for('static', filename='images/juvenile-logo.svg')}}" alt="Dallas Juvenile Logo" width="100" height="100">
   </div>
 </div>
 
