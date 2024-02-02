@@ -4,8 +4,31 @@
   <link rel="stylesheet" href="{{url_for('static', filename='/style.css')}}"> 
   <title>YSAB Application</title>   
 </head>
-<!-- <form action="https://getform.io/f/b088edd5-e5f9-4d4f-bd70-5e760247916b" method="POST"> -->
+
 <form action="/submit_form" method="POST">
+<input type="hidden" id="timestamp" name="timestamp">
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Function to format the current date and time as 'MM-DD-YYYY HH:MM'
+    function getCurrentTimestamp() {
+      const now = new Date();
+      const month = String(now.getMonth() + 1).padStart(2, '0');
+      const day = String(now.getDate()).padStart(2, '0');
+      const year = now.getFullYear();
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+
+      return `${month}-${day}-${year} ${hours}:${minutes}`;
+    }
+
+    // Get the element where you want to display the timestamp
+    const timestampElement = document.getElementById('timestamp');
+
+    // Set the initial timestamp
+    timestampElement.textContent = getCurrentTimestamp();
+  });
+</script>
+
 
 <div class="container">
   <div class="center">
@@ -29,8 +52,15 @@
     <p><b>Disclamer:</b> For privacy and security reasons, please be advised not to include any confidential or sensitive information in your submission.</p>
     
     <div>
+      <br>
+        <div>
+          <input id="timestamp" type="hidden" name="timestamp" readonly>
+        </div>
+      </div>
+    
+    <div>
     <br>
-      <label class="desc" id="name" for="name">Name</label>
+      <label class="desc" type="hidden" id="name" for="name">Name</label>
       <div>
         <input id="name" name="name" type="text" class="field text fn" value="" size="8" tabindex="1" required>
       </div>
