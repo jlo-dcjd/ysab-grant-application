@@ -36,8 +36,5 @@ def submit_form():
             # return jsonify({'success': False, 'error': str(e)})
              return render_template('error.html', error=str(e))
 
-# post = {'_id': 0, "name": "tim", "score":5}
-# collection.insert_one(post)\
-
 if __name__ == '__main__':
     app.run()
