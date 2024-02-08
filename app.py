@@ -2,7 +2,9 @@ from flask import Flask, request, render_template, jsonify
 import pymongo
 from pymongo import MongoClient
 from dotenv import load_dotenv
+import datetime
 import os
+import pytz
 
 load_dotenv() 
 
@@ -26,6 +28,13 @@ def submit_form():
             form_data = request.form.to_dict()
             name = request.form.get('name')
             email = request.form.get('email')
+
+            #timestamp
+            central_timezone = pytz.timezone('America/Chicago')
+            current_time = datetime.datetime.now(central_timezone)
+            timestamp = current_time.strftime("%m-%d-%Y %H:%M")
+            
+            form_data = {'timestamp': timestamp, **form_data}
 
             # Insert data into MongoDB
             collection.insert_one(form_data)

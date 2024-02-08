@@ -6,36 +6,11 @@
 </head>
 
 <form action="/submit_form" method="POST">
-<input type="hidden" id="timestamp" name="timestamp">
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // Function to format the current date and time as 'MM-DD-YYYY HH:MM'
-    function getCurrentTimestamp() {
-      const now = new Date();
-      const month = String(now.getMonth() + 1).padStart(2, '0');
-      const day = String(now.getDate()).padStart(2, '0');
-      const year = now.getFullYear();
-      const hours = String(now.getHours()).padStart(2, '0');
-      const minutes = String(now.getMinutes()).padStart(2, '0');
-
-      return `${month}-${day}-${year} ${hours}:${minutes}`;
-    }
-
-    // Get the element where you want to display the timestamp
-    const timestampElement = document.getElementById('timestamp');
-
-    // Set the initial timestamp
-    timestampElement.textContent = getCurrentTimestamp();
-  });
-</script>
-
-
 <div class="container">
   <div class="center">
     <img src="{{url_for('static', filename='images/juvenile-logo.svg')}}" alt="Dallas Juvenile Logo" width="100" height="100">
   </div>
 </div>
-
     <header>
       <h2>Dallas County Juror Fund Application</h2>
       <div>Dallas County jurors have the option of contributing their juror fund stipend to help at risk youth in the Dallas County Juvenile Department and the foster care system.  The Youth Services Advisory Board (YSAB) oversees the use of the Dallas County Juror Fund for special projects to address specific concerns related to juvenile crime prevention. In order to be eligible for YSAB recommendation, Dallas County Juvenile Department fund requestors must complete the following application. </div>
@@ -50,13 +25,6 @@
           </ol>
 
     <p><b>Disclamer:</b> For privacy and security reasons, please be advised not to include any confidential or sensitive information in your submission.</p>
-    
-    <div>
-      <br>
-        <div>
-          <input id="timestamp" type="hidden" name="timestamp" readonly>
-        </div>
-      </div>
     
     <div>
     <br>
@@ -90,8 +58,8 @@
       </label>
       <div>
         <input id="phone" name="phone" type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890" oninput="formatPhoneNumber(this)" maxlength="12" required>
-     </div>
-  </div>
+      </div>
+    </div>
   <script>
     function formatPhoneNumber(input) {
       // Remove any non-numeric characters
