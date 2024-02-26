@@ -3,6 +3,7 @@
 <head>
   <link rel="stylesheet" href="{{url_for('static', filename='/style.css')}}"> 
   <title>YSAB Application</title>   
+  <link rel="icon" href="{{url_for('static', filename='images/fav-icon.svg')}}">
 </head>
 
 <form action="/submit_form" method="POST">
@@ -12,7 +13,7 @@
   </div>
 </div>
     <header>
-      <h2>Dallas County Juror Fund Application</h2>
+      <h2>Dallas County Juror Fund Application (YSAB Funds)</h2>
       <div>Dallas County jurors have the option of contributing their juror fund stipend to help at risk youth in the Dallas County Juvenile Department and the foster care system.  The Youth Services Advisory Board (YSAB) oversees the use of the Dallas County Juror Fund for special projects to address specific concerns related to juvenile crime prevention. In order to be eligible for YSAB recommendation, Dallas County Juvenile Department fund requestors must complete the following application. </div>
     </header>
 
@@ -21,14 +22,14 @@
             <li>Applicants must answer all questions</li>
             <li>Length of answers have to adhere to the specified word limit indicated in the question</li>
             <li>Applications must click the submit button to complete the application</li>
-            <li>The application form must be completed by <span style="color:red"> no later than 5:00 PM CST on April 21st, 2023</span></li>
+            <li>The application form must be completed by <span style="color:red"> no later than 5:00 PM CST on April 19th, 2023</span></li>
           </ol>
 
     <p><b>Disclamer:</b> For privacy and security reasons, please be advised not to include any confidential or sensitive information in your submission.</p>
     
     <div>
     <br>
-      <label class="desc" type="hidden" id="name" for="name">Name</label>
+      <label class="desc" type="hidden" id="name" for="name">Applicant Name</label>
       <div>
         <input id="name" name="name" type="text" class="field text fn" value="" size="8" tabindex="1" required>
       </div>
@@ -45,7 +46,7 @@
 
     <div>
         <label class="desc" id="email" for="email">
-          Email
+          Applicant Contact Email
         </label>
         <div>
           <input id="email" name="email" type="email" spellcheck="false" value="" maxlength="255" tabindex="3" required> 
@@ -54,7 +55,7 @@
 
     <div>
       <label class="desc" id="phone" for="phone">
-        Phone Number
+        Applicant Phone Number
       </label>
       <div>
         <input id="phone" name="phone" type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890" oninput="formatPhoneNumber(this)" maxlength="12" required>
@@ -87,7 +88,7 @@
         <select id="application_renewal" name="application_renewal" class="field select medium" tabindex="11"> 
           <option value="Choose an item">Choose an item</option>
           <option value="Yes">Yes</option>
-          <option value="No">No</option>
+          <option value="No">No (New Project)</option>
         </select>
         </div>
     </div>
@@ -114,6 +115,7 @@
           <option value="Educational Services">Educational Services</option>
           <option value="Probation Services">Probation Services</option>
           <option value="Residential Services">Residential Services</option>
+          <option value="Administration">Administration</option>
         </select>
         </div>
     </div>
@@ -145,7 +147,7 @@
        </div>
     </div>
 
-  <h3>Purpose Project</h3>
+  <h3>Proposed Project</h3>
       
     <div>
       <label class="desc" id="problem_statement" for="problem_statement">
@@ -157,29 +159,29 @@
     </div>
 
     <div>
-      <label class="desc" id="target_group" for="target_group">Target Group</label>
+      <label class="desc" id="target_group" for="target_group">Target Group/Population <p>(Be specific about who will benefit from expending these funds)</p></label>
       <div>
         <textarea id="target_group" name="target_group" spellcheck="true" rows="10" cols="50" tabindex="4" placeholder="Maximum 250 words"></textarea>
       </div>
   </div>
 
     <div>
-      <label class="desc" id="project_appoarch" for="project_appoarch">Project Approach and Activities</label>
+      <label class="desc" id="project_appoarch" for="project_appoarch">Project Approach & Activities <p>(Provide a detailed justification for proposing this project, including specific items intending to be purchased with the funds)</p></label>
       <div>
         <textarea id="project_appoarch" name="project_appoarch" spellcheck="true" rows="10" cols="50" tabindex="4" placeholder="Maximum 500 words"></textarea>
       </div>
   </div>
 
     <div>
-      <label class="desc" id="capacity_capabilities" for="capacity_capabilities">Capacity and Capabilities</label>
+      <label class="desc" id="program_manager" for="program_manager">Program Manager/Project Manager <p>(Provide the name(s) and title(s) of staff who will be responsible for the administration and management of any funds awarded)</p></label>
       <div>
-        <textarea id="capacity_capabilities" name="capacity_capabilities" spellcheck="true" rows="10" cols="50" tabindex="4" placeholder="Maximum 500 words"></textarea>
+        <textarea id="program_manager" name="program_manager" spellcheck="true" rows="10" cols="50" tabindex="4" placeholder="Maximum 500 words"></textarea>
       </div>
     </div>
       
   <h3>Performance Management </h3>
     <div>
-      <label class="desc" id="project_goals" for="project_goals">What are the project goals?</label>
+      <label class="desc" id="project_goals" for="project_goals">Provide a detailed description of the goals and/or objectives for this project. <p>(Be specific including how youth will directly benefit from this project and these funds; the number of overall youth, families, friends, etc. who will benefit not including DCJD youth; include other output measures as needed)</p></label>
       <div>
         <textarea id="project_goals" name="project_goals" spellcheck="true" rows="10" cols="50" tabindex="4"></textarea>
       </div>
@@ -221,53 +223,10 @@
       </div>
     </div>  
 
-    <div>
-      <label class="desc" id="expected_outcome" for="expected_outcome">List project expected outcome measures</label>
-      <div>
-        <table id="expected_outcome">
-          <thead>
-              <tr>
-                  <th>Output Measures</th>
-                  <th>Target</th>
-              </tr>
-          </thead>
-          <tbody>
-              <tr>
-                  <td><input type="text" name="measure1.1"></td>
-                  <td><input type="text" name="target1.1"></td>
-              </tr>
-              <tr>
-                  <td><input type="text" name="measure2.1"></td>
-                  <td><input type="text" name="target2.1"></td>
-              </tr>
-              <tr>
-                  <td><input type="text" name="measure3.1"></td>
-                  <td><input type="text" name="target3.1"></td>
-              </tr>
-              <tr>
-                  <td><input type="text" name="measure4.1"></td>
-                  <td><input type="text" name="target4.1"></td>
-              </tr>
-              <tr>
-                  <td><input type="text" name="measure5.1"></td>
-                  <td><input type="text" name="target5.1"></td>
-              </tr>
-          </tbody>
-        </table>
-      </div>
-    </div> 
-
-    <div>
-      <label class="desc" id="project_goals" for="project_goals">Data Management: What data will be collected, how, and by whom to determine if the project is achieving the established output and outcome measures throughout the grant period?</label>
-      <div>
-        <textarea id="project_goals" name="project_goals" spellcheck="true" rows="10" cols="50" tabindex="4" placeholder="Maximum 250 words"></textarea>
-      </div>
-    </div>
-
   <h3>Budget Summary</h3>
     <div>
       <label class="desc" id="other_funding" for="other_funding">
-        List other funding sources or proposed funding sources for this project (if any).
+        Provide the name of any other sources of funding that may be used for this project.
       </label>
       <div>
         <input id="other_funding" name="other_funding" type="text" class="field text fn" value="" size="8" tabindex="1">
@@ -275,7 +234,7 @@
     </div>
     <br>
     <div>
-      <label class="desc" id="budget_estimate" for="budget_estimate">Budget Estimate: Indicate the different categories of expenses proposed in the project. Provide, in the “Description” column, an explanation of each expense associated with the category.  Expenses listed in the budget must be substantiated in sections Proposed Project and Performance Management.</label>
+      <label class="desc" id="budget_estimate" for="budget_estimate">Budget Estimate: Indicate the different categories of expenses proposed in the project. Provide, in the “Description” column, an explanation of each expense associated with the category.  Expenses listed in the budget must be justified in the Project Approach & Activities section.</label>
       <div>
         <p>Catetory definitions: Use the follow category definitions as guidelines for selecting the appropriate label.</p>
         <ul>
@@ -283,8 +242,8 @@
           <li><b>Gifts</b>: Expenditures made as a gesture of goodwill, appreciation, or celebration. They are not tied to incentives or rewards for specific achievements or behaviors. Items could include but not limited to: gift bags, small electronics, notebooks, makeup.</li>
           <li><b>Supplies</b>: Expenditures related to materials and resources for enchancing the program's activities and enriching the experience for participants. Items could include but not limited to: school/art supplies, table or board games, decorations.</li>
           <li><b>Field Trips</b>: Expenditures related to organizing and facilitating educational or recreational outings outside of the program's usual location.</li>
-          <li><b>Clothes</b>: Expenditures related to the purchase of clothing items such as uniforms, or attire required for program participants.</li>
-          <li><b>Scholarships</b>: Expenditures related to providing financial assistance to individuals to support their education. Scholarships may take various forms, including monetary awards, educational materials such as textbooks or laptops, or direct payment of tuition fees to educational institutions.</li>
+          <li><b>Clothing</b>: Expenditures related to the purchase of clothing items such as uniforms, or other attire, as needed.</li>
+          <li><b>Scholarships</b>: Expenditures related to providing financial assistance to individuals to support their education. Scholarships may take various forms, including monetary awards, educational materials such as textbooks or laptops, or direct payment for tuition and/or fees to educational institutions.</li>
           <li><b>Other</b>: For expenditures that do not fit into any of the predefined budget categories.</li>
         </ul>
       </div>
@@ -435,37 +394,82 @@
         <table class="grand-total-table" id="budget_estimate">
           <thead>
               <tr>
-                  <th>Grand Total</th>
+                  <th>Overall Project Cost</th>
                   <td><input type="text" name="grandTotal" id="grandTotal" readonly></td>
               </tr>
           </thead>
         </table>
       </div>
 
+      <div>
+        <table class="grand-total-table" id="youth_total">
+          <thead>
+            <tr>
+              <th>Number of Youth Who Will Benefit</th>
+              <td><input type="text" name="youth_total" id="youth_total_input" required></td>
+            </tr>
+          </thead>
+        </table>
+      </div>
+      
+      <div>
+        <table class="grand-total-table" id="benefit_per_youth">
+          <thead>
+            <tr>
+              <th>Individual Youth Benefit ($)</th>
+              <td><input type="text" name="benefit_per_youth" id="benefit_per_youth" readonly></td>
+            </tr>
+          </thead>
+        </table>
+      </div>
+      
       <script>
-          // JavaScript to calculate the total based on cost per item and number of items
-          document.addEventListener("input", function(e) {
-              if (e.target.name.startsWith("cost") || e.target.name.startsWith("items")) {
-                  const index = e.target.name.slice(-1);
-                  const cost = parseFloat(document.getElementsByName("cost" + index)[0].value) || 0;
-                  const items = parseInt(document.getElementsByName("items" + index)[0].value) || 0;
-                  const total = cost * items;
-                  document.getElementsByName("total" + index)[0].value = total.toFixed(2);
-
-                  // Calculate and update the Grand Total
-                  calculateGrandTotal();
-              }
+        // JavaScript to calculate the total based on cost per item and number of items
+        document.addEventListener("input", function(e) {
+          if (e.target.name.startsWith("cost") || e.target.name.startsWith("items")) {
+            const index = e.target.name.slice(-1);
+            const cost = parseFloat(document.getElementsByName("cost" + index)[0].value) || 0;
+            const items = parseInt(document.getElementsByName("items" + index)[0].value) || 0;
+            const total = cost * items;
+            document.getElementsByName("total" + index)[0].value = total.toFixed(2);
+      
+            // Calculate and update the Grand Total
+            calculateGrandTotal();
+          }
+        });
+      
+        function calculateGrandTotal() {
+          const totalInputs = document.querySelectorAll('[name^="total"]');
+          let grandTotal = 0;
+          totalInputs.forEach(input => {
+            grandTotal += parseFloat(input.value) || 0;
           });
+          document.getElementById("grandTotal").value = grandTotal.toFixed(2);
+        }
+      
+        document.addEventListener("input", function(e) {
+          if (e.target.id === "grandTotal" || e.target.id === "youth_total_input") {
+            calculateBenefitPerYouth();
+          }
+        });
 
-          function calculateGrandTotal() {
-            const totalInputs = document.querySelectorAll('[name^="total"]');
-            let grandTotal = 0;
-            totalInputs.forEach(input => {
-                grandTotal += parseFloat(input.value) || 0;
-            });
-            document.getElementById("grandTotal").value = grandTotal.toFixed(2);
+        function calculateBenefitPerYouth() {
+          // console.log("Calculating benefit per youth...");
+          const budgetEstimate = parseFloat(document.getElementById('grandTotal').value);
+          const youthTotal = parseInt(document.getElementById('youth_total_input').value);
+          const benefitPerYouthInput = document.querySelector('[name="benefit_per_youth"]');
+
+          if (!isNaN(budgetEstimate) && !isNaN(youthTotal) && youthTotal !== 0) {
+            const benefitPerYouth = budgetEstimate / youthTotal;
+            // console.log("Benefit per youth:", benefitPerYouth.toFixed(2));
+            benefitPerYouthInput.value = benefitPerYouth.toFixed(2);
+          } else {
+            benefitPerYouthInput.value = '';
+          }
         }
       </script>
+      
+
     </div> 
     <br><br>
     <div>
