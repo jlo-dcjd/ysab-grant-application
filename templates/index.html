@@ -474,12 +474,13 @@
 
   <br><br>
 
-  <div style="text-align: center;">
-    <div style="display: inline-block; border: 1px solid black; padding: 10px;">
-        <input type="checkbox" id="disclaimer_check" name="disclaimer_check" value="agree" required style="width: 15px; height: 15px;" required>
-        <label for="disclaimer_check" style="margin-left: 15px;"></label> <b>Disclaimer</b>: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</label>
+  <div style="text-align: justify;">
+    <div style="display: inline-flex; align-items: center; border: 1px solid red; padding: 15px;">
+      <input type="checkbox" id="disclaimer_check" name="disclaimer_check" value="agree" required style="width: 15px; height: 15px;" required>
+      <label for="disclaimer_check" style="margin-left: 10px;">All of the information contained within this application is true and accurate as of the date the application is submitted. As the applicant, you affirm that all due diligence has been completed, this request for Dallas County Juror funds administered and managed by the Youth Services Advisory Board does not duplicate any other fund source or service within the Dallas County Juvenile Department, and is made in good faith and with respect for the purpose of the Youth Services Advisory Board grant program for the express direct benefit of the youth under the authority of the Dallas County Juvenile Department.</label>
     </div>
   </div>
+  
 
     <br><br>
     <div>
@@ -491,8 +492,23 @@
 
     <div class="container">
       <div class="center">
-        <input id="saveForm" name="saveForm" type="submit" value="Submit" class="submit-button">
+        <input id="saveForm" name="saveForm" type="submit" value="Submit" class="submit-button" disabled>
       </div>
     </div>
+
+    <script>
+      const disclaimerCheckbox = document.getElementById('disclaimer_check');
+      const submitButton = document.getElementById('saveForm');
+    
+      disclaimerCheckbox.addEventListener('change', function() {
+        if (this.checked) {
+          submitButton.style.backgroundColor = 'blue';
+          submitButton.disabled = false;
+        } else {
+          submitButton.style.backgroundColor = 'grey';
+          submitButton.disabled = true;
+        }
+      });
+    </script>
   </form>
 </html>

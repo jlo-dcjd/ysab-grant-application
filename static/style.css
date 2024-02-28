@@ -145,9 +145,13 @@
     position: absolute;
     width: 150px;
     height: 40px;
-    background-color: blue;
+    background-color: grey;
     border: none;
     color: white;
     border-radius: 5px;
+    cursor:pointer
   }
   
+  .value{
+    text-align:left;
+}
