@@ -39,7 +39,7 @@ def app_id():
     project_abbreviation = re.sub(r'[^a-zA-Z0-9\s]', '', project_name)
     project_abbreviation = "".join(word[0] for word in project_abbreviation.split())
     funding = 'YSAB'
-    # form type - A: application PM: progress report mid-term PF: progress report final
+    # form type - A: application M: progress report mid-term F: progress report final
     form_type = 'A'
     # Generate unique ID
     unique_id = f"{year}-{application_number:03d}-{project_abbreviation}-{funding}-{form_type}"
