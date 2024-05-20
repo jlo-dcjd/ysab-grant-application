@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, jsonify
+from flask import Flask, request, render_template, jsonify, send_file
 import pymongo
 from pymongo import MongoClient
 from dotenv import load_dotenv
@@ -7,6 +7,8 @@ import os
 import pytz
 import pandas as pd
 import re
+from bs4 import BeautifulSoup
+
 
 load_dotenv() 
 
@@ -38,11 +40,10 @@ def app_id():
     project_name = request.form.get('title')
     project_abbreviation = re.sub(r'[^a-zA-Z0-9\s]', '', project_name)
     project_abbreviation = "".join(word[0] for word in project_abbreviation.split())
-    funding = 'YSAB'
-    # form type - A: application M: progress report mid-term F: progress report final
+    # form type - A: application M: progress report mid-term F: progress report final E: external
     form_type = 'A'
     # Generate unique ID
-    unique_id = f"{year}-{application_number:03d}-{project_abbreviation}-{funding}-{form_type}"
+    unique_id = f"{year}-{application_number:03d}-{project_abbreviation}-{form_type}"
     return unique_id
 
 @app.route("/", methods=['GET', 'POST'])
@@ -67,11 +68,52 @@ def submit_form():
             # Insert data into MongoDB
             collection.insert_one(form_data)
 
+            # make html application w/ user responses
+            # Read the HTML file
+            with open('templates/ysab-application.html', 'r', encoding="utf8") as file:
+                html_content = file.read()
+            # Parse the HTML content with BeautifulSoup
+            soup = BeautifulSoup(html_content, 'html.parser')
+
+            # Update the value attribute of input fields based on dictionary keys
+            for key, value in form_data.items():
+                input_field = soup.find('input', {'id': key})
+                if input_field:
+                    input_field['value'] = value
+                select_field = soup.find('select', {'id': key})
+                if select_field:  
+                    # Clear any previously selected option
+                    for option in select_field.find_all('option'):
+                        if 'selected' in option.attrs:
+                            del option.attrs['selected']
+                        # Set the selected attribute for the matching option
+                        if option.get('value') == value:
+                            option['selected'] = 'selected'
+                            
+                # Handle textarea fields
+                textarea_field = soup.find('textarea', {'id': key})
+                if textarea_field:
+                    textarea_field.string = value
+                    
+                # Handle table input fields
+                table_input_field = soup.find('input', {'name': key})
+                if table_input_field:
+                    table_input_field['value'] = value
+
+                # Save the updated HTML content to a file
+                with open('templates\ysab-application-record.html', 'w') as file:
+                    file.write(str(soup))
+
             # return jsonify({'success': True, 'message': 'Form data submitted successfully'})
             return render_template('confirmation.html', name=name, email=email)
         except Exception as e:
             # return jsonify({'success': False, 'error': str(e)})
              return render_template('error.html', error=str(e))
+
+@app.route('/download')
+def download_file():
+    p = 'templates\ysab-application-record.html'
+    return send_file(p, as_attachment=True)
 
 if __name__ == '__main__':
     app.run(debug=False)
