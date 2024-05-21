@@ -70,10 +70,15 @@ def submit_form():
 
             # make html application w/ user responses
             # Read the HTML file
-            with open('templates/ysab-application.html', 'r', encoding="utf8") as file:
+            with open(r'templates/ysab-application.html', 'r', encoding="utf8") as file:
                 html_content = file.read()
             # Parse the HTML content with BeautifulSoup
             soup = BeautifulSoup(html_content, 'html.parser')
+
+            # Find the existing h3 tag and update it with the timestamp
+            h4_tag = soup.find('h4')
+            if h4_tag:
+                h4_tag.string = f"{timestamp}"
 
             # Update the value attribute of input fields based on dictionary keys
             for key, value in form_data.items():
@@ -101,7 +106,7 @@ def submit_form():
                     table_input_field['value'] = value
 
                 # Save the updated HTML content to a file
-                with open('templates\ysab-application-record.html', 'w') as file:
+                with open(r'templates/ysab-application-record.html', 'w') as file:
                     file.write(str(soup))
 
             # return jsonify({'success': True, 'message': 'Form data submitted successfully'})
@@ -112,7 +117,7 @@ def submit_form():
 
 @app.route('/download')
 def download_file():
-    p = 'templates\ysab-application-record.html'
+    p = r'templates/ysab-application-record.html'
     return send_file(p, as_attachment=True)
 
 if __name__ == '__main__':
