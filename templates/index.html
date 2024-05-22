@@ -4,12 +4,6 @@
   <link rel="stylesheet" href="{{url_for('static', filename='/style.css')}}"> 
   <title>YSAB Application</title>   
   <link rel="icon" href="{{url_for('static', filename='images/fav-icon-blue.svg')}}">
-  <script>
-    window.addEventListener('beforeunload', function (event) {
-        event.preventDefault();
-        return message;
-    });
-  </script>
 </head>
 
 <form action="/submit_form" method="POST">
@@ -560,6 +554,14 @@
           submitButton.style.backgroundColor = 'grey';
           submitButton.disabled = true;
         }
+      });
+
+      window.addEventListener('beforeunload', function (e) {
+      if (!disclaimerCheckbox.checked) {
+        const confirmationMessage = 'You have unsaved changes. Are you sure you want to leave this page?';
+        e.returnValue = confirmationMessage;
+        return confirmationMessage;
+       }
       });
     </script>
   </form>
